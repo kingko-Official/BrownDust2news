@@ -1,5 +1,14 @@
-# mirai-console-plugin-template
+# mirai-console-plugin-BrownDust2
 
-[Mirai Console](https://github.com/mamoe/mirai-console) 插件模板, 使用 Kotlin + Gradle.
+---
 
-[如何使用](https://github.com/project-mirai/how-to-use-plugin-template)
+# 暂未实现获取公告图片功能
+
+---
+
+代码示例
+- /announcement 4270
+- /公告查询 4270
+- /查询公告 4270
+
+
