@@ -23,8 +23,10 @@ object AnnouncementCommand : SimpleCommand(
             val rawContent = announcement.attributes.NewContent
             val publishDate = announcement.attributes.publishedAt
 
-            // 移除 HTML 标签并格式化内容
-            val plainContent = Jsoup.parse(rawContent ?: "无内容").text()
+            // 移除 HTML 标签但保留换行
+            val document = Jsoup.parse(rawContent ?: "无内容")
+            val paragraphs = document.select("p")
+            val plainContent = paragraphs.joinToString("\n\n") { it.wholeText() }
 
             // 转换日期格式
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
@@ -33,12 +35,11 @@ object AnnouncementCommand : SimpleCommand(
 
             // 发送格式化消息
             sendMessage(
-                """
-                标题: $title
-                内容: $plainContent
-                发布日期: $formattedDate
-                """.trimIndent()
+                "标题: $title\n" +
+                    "内容: $plainContent\n" +
+                    "发布日期: $formattedDate"
             )
+
         } else {
             sendMessage("未找到 ID 为 $id 的公告。请确认输入是否正确。")
         }
