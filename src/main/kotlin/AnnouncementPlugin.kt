@@ -10,7 +10,7 @@ object AnnouncementPlugin : JavaPlugin(
     JvmPluginDescription(
         id = "com.kingko.announcementplugin",
         name = "BrownDust2 Announcement Plugin",
-        version = "0.1.0"
+        version = "0.1.1"
     ) {
         author("KingKo")
         info("查询棕色尘埃2的公告内容")
